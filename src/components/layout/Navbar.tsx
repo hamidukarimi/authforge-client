@@ -1,0 +1,73 @@
+import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
+import useAuth from "@/hooks/useAuth";
+import useLogout from "@/hooks/useLogout";
+import Button from "@/components/ui/Button";
+
+// ─── Component ────────────────────────────────────────────────────────────────
+
+const Navbar = () => {
+  const { user, isAuthenticated } = useAuth();
+  const { logout, isPending } = useLogout();
+
+  return (
+    <motion.nav
+      initial={{ opacity: 0, y: -16 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.3, ease: "easeOut" }}
+      className="w-full bg-white border-b border-zinc-100 shadow-sm"
+    >
+      <div className="max-w-4xl mx-auto px-6 h-14 flex items-center justify-between">
+
+        {/* Logo */}
+        <Link
+          to={isAuthenticated ? "/dashboard" : "/login"}
+          className="text-lg font-bold text-indigo-600 tracking-tight"
+        >
+          AuthForge
+        </Link>
+
+        {/* Right Side */}
+        {isAuthenticated && user ? (
+          <div className="flex items-center gap-4">
+            {/* User Info */}
+            <div className="hidden sm:flex flex-col items-end">
+              <span className="text-sm font-medium text-zinc-800">
+                {user.firstname} {user.lastname}
+              </span>
+              <span className="text-xs text-zinc-400">
+                @{user.username}
+              </span>
+            </div>
+
+            {/* Avatar */}
+            <div className="w-8 h-8 rounded-full bg-indigo-100 text-indigo-600 flex items-center justify-center text-sm font-semibold uppercase">
+              {user.firstname[0]}{user.lastname[0]}
+            </div>
+
+            {/* Logout */}
+            <Button
+              variant="ghost"
+              isLoading={isPending}
+              onClick={() => logout()}
+            >
+              Sign out
+            </Button>
+          </div>
+        ) : (
+          <div className="flex items-center gap-2">
+            <Link to="/login">
+              <Button variant="ghost">Sign in</Button>
+            </Link>
+            <Link to="/register">
+              <Button variant="primary">Get started</Button>
+            </Link>
+          </div>
+        )}
+
+      </div>
+    </motion.nav>
+  );
+};
+
+export default Navbar;
