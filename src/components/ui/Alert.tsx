@@ -11,10 +11,10 @@ interface AlertProps {
 // ─── Variants ─────────────────────────────────────────────────────────────────
 
 const variants: Record<NonNullable<AlertProps["type"]>, string> = {
-  error:   "bg-red-50 border-red-300 text-red-700",
-  success: "bg-green-50 border-green-300 text-green-700",
-  warning: "bg-yellow-50 border-yellow-300 text-yellow-700",
-  info:    "bg-blue-50 border-blue-300 text-blue-700",
+  error:   "bg-red-950 border-red-800 text-red-400",
+  success: "bg-green-950 border-green-800 text-green-400",
+  warning: "bg-yellow-950 border-yellow-800 text-yellow-400",
+  info:    "bg-blue-950 border-blue-800 text-blue-400",
 };
 
 // ─── Component ────────────────────────────────────────────────────────────────
@@ -30,7 +30,7 @@ const Alert = ({ message, type = "error", visible }: AlertProps) => {
           transition={{ duration: 0.2 }}
           role="alert"
           className={`
-            w-full px-4 py-3 rounded-lg border text-sm font-medium
+            w-full px-4 py-3 rounded-xl border text-sm font-medium
             ${variants[type]}
           `}
         >

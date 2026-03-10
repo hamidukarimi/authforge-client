@@ -1,7 +1,5 @@
 import type { ApiUser } from "@/types/api.types";
 
-// ─── Request Payloads ─────────────────────────────────────────────────────────
-
 export interface LoginPayload {
   email: string;
   password: string;
@@ -13,9 +11,13 @@ export interface RegisterPayload {
   username: string;
   email: string;
   password: string;
+  birthday?: string;
+  gender?: "male" | "female" | "other";
+  location?: {
+    country?: string;
+    city?: string;
+  };
 }
-
-// ─── Response Data ────────────────────────────────────────────────────────────
 
 export interface AuthResult {
   user: ApiUser;

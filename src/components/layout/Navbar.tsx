@@ -15,37 +15,34 @@ const Navbar = () => {
       initial={{ opacity: 0, y: -16 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.3, ease: "easeOut" }}
-      className="w-full bg-white border-b border-zinc-100 shadow-sm"
+      className="w-full bg-black border-b border-zinc-900"
     >
       <div className="max-w-4xl mx-auto px-6 h-14 flex items-center justify-between">
 
         {/* Logo */}
         <Link
           to={isAuthenticated ? "/dashboard" : "/login"}
-          className="text-lg font-bold text-indigo-600 tracking-tight"
+          className="text-lg font-bold text-[#F7C12B] tracking-tight"
         >
-          AuthForge
+          Yummy
         </Link>
 
         {/* Right Side */}
         {isAuthenticated && user ? (
           <div className="flex items-center gap-4">
-            {/* User Info */}
             <div className="hidden sm:flex flex-col items-end">
-              <span className="text-sm font-medium text-zinc-800">
+              <span className="text-sm font-medium text-white">
                 {user.firstname} {user.lastname}
               </span>
-              <span className="text-xs text-zinc-400">
+              <span className="text-xs text-zinc-500">
                 @{user.username}
               </span>
             </div>
 
-            {/* Avatar */}
-            <div className="w-8 h-8 rounded-full bg-indigo-100 text-indigo-600 flex items-center justify-center text-sm font-semibold uppercase">
+            <div className="w-8 h-8 rounded-full bg-[#F7C12B] text-black flex items-center justify-center text-sm font-bold uppercase">
               {user.firstname[0]}{user.lastname[0]}
             </div>
 
-            {/* Logout */}
             <Button
               variant="ghost"
               isLoading={isPending}

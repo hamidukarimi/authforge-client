@@ -22,7 +22,7 @@ const Input = ({
       {label && (
         <label
           htmlFor={id}
-          className="text-sm font-medium text-zinc-700"
+          className="text-sm font-medium text-zinc-300"
         >
           {label}
         </label>
@@ -31,23 +31,23 @@ const Input = ({
       <input
         id={id}
         className={`
-          w-full px-3 py-2 rounded-lg text-sm
+          w-full px-4 py-3 rounded-xl text-sm
           border transition-colors duration-200
-          outline-none bg-white text-zinc-900
-          placeholder:text-zinc-400
+          outline-none bg-transparent text-white
+          placeholder:text-zinc-500
           ${
             error
-              ? "border-red-400 focus:border-red-500 focus:ring-2 focus:ring-red-100"
-              : "border-zinc-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-100"
+              ? "border-red-500 focus:border-red-400 focus:ring-2 focus:ring-red-900"
+              : "border-zinc-700 focus:border-[#F7C12B] focus:ring-2 focus:ring-[#F7C12B]/20"
           }
-          disabled:bg-zinc-50 disabled:text-zinc-400 disabled:cursor-not-allowed
+          disabled:opacity-50 disabled:cursor-not-allowed
           ${className}
         `}
         {...props}
       />
 
       {error && (
-        <p className="text-xs text-red-500 mt-0.5">{error.message}</p>
+        <p className="text-xs text-red-400 mt-0.5">{error.message}</p>
       )}
     </div>
   );

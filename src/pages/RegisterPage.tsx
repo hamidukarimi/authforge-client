@@ -1,10 +1,8 @@
 import RegisterForm from "@/features/auth/components/RegisterForm";
 
-// ─── Component ────────────────────────────────────────────────────────────────
-
 const RegisterPage = () => {
   return (
-    <div className="min-h-screen bg-zinc-50 flex items-center justify-center p-4">
+    <div className="min-h-screen bg-black flex items-center justify-center p-6">
       <RegisterForm />
     </div>
   );
